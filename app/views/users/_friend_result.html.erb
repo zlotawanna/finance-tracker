@@ -2,15 +2,29 @@
   <%= render 'layouts/messages' %>
 </div>
 
-<% if @friend %>
+<% if @friends %>
 <div class="form-group row">
-  <div class="col-2 text-right mt-2"><h6>User:</h6></div>
-  <div class="col-sm-8">
-    <div class="card card-header result-block">
-      <strong>First Name: </strong> <%= @friend.first_name %>
-      <strong>Last Name: </strong> <%= @friend.last_name %>
-      <strong>Email: </strong> <%= @friend.email %>
-    </div>
+  <div class="col-2 text-right mt-2"><h6>Users:</h6></div>
+  <div class="col-sm-8 no-right-padding">
+    <table class="table table-hover">
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td scope="row"><strong>Name: </strong> <%= friend.full_name %></td>
+            <td><strong>Email: </strong> <%= friend.email %></td>
+            <td><%= link_to 'View profile', '#', class: "btn btn-sm btn-info" %></td>
+            <td>
+              <% if current_user.not_friend_with?(friend.id) %>
+                <%= link_to 'Follow', friendships_path(friend: friend),
+                                  class: "btn btn-sm btn-success", method: :post %>
+              <% else %>
+                <span>Your friend</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 <% end %>
