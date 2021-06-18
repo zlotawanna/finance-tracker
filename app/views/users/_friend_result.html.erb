@@ -1,0 +1,16 @@
+<div>
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @friend %>
+<div class="form-group row">
+  <div class="col-2 text-right mt-2"><h6>User:</h6></div>
+  <div class="col-sm-8">
+    <div class="card card-header result-block">
+      <strong>First Name: </strong> <%= @friend.first_name %>
+      <strong>Last Name: </strong> <%= @friend.last_name %>
+      <strong>Email: </strong> <%= @friend.email %>
+    </div>
+  </div>
+</div>
+<% end %>

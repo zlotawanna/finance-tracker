@@ -1,0 +1,24 @@
+<div class="row justify-content-md-center">
+  <div class="col-8 no-right-padding">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_friends.each do |friend| %>
+          <tr>
+            <th scope="row"><%= friend.first_name %></th>
+            <td><%= friend.last_name %></td>
+            <td><%= friend.email %></td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
